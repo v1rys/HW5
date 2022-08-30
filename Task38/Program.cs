@@ -17,50 +17,56 @@ double[] MassivRandom(int size)
 }
 double SelectionSortMin(double[] array)
 {
-    for (int i = 0; i < array.Length - 1; i++)
+    double MinPositions2 = 0;
+    for (int i = 0; i <= array.Length - 1; i++)
     {
         int MinPositions = i;
 
         for (int j = i + 1; j < array.Length; j++)
         {
-            if (array[j] < array[MinPositions])
-            {
+            if (array[j] > array[MinPositions])
+            
                 MinPositions = j;
-            }
+            
         }
         double temporary = array[i];
         array[i] = array[MinPositions];
         array[MinPositions] = temporary;
+        MinPositions2 = array[MinPositions]; 
 
     }
-    return array;
+    return MinPositions2;
 
 }
 
 double SelectionSortMax(double[] array)
 {
-    for (int i = 0; i < array.Length - 1; i++)
+    double MaxPositions2 = 0;
+    for (int i = 0; i <= array.Length - 1; i++)
     {
         int MaxPositions = i;
 
         for (int j = i + 1; j < array.Length; j++)
         {
-            if (array[j] > array[MaxPositions])
-            {
+            if (array[j] < array[MaxPositions])
+            
                 MaxPositions = j;
-            }
+            
         }
         double temporary = array[i];
         array[i] = array[MaxPositions];
         array[MaxPositions] = temporary;
+        MaxPositions2 = array[MaxPositions];
 
     }
-    return array;
+    return MaxPositions2;
 
 }
 
 double[] arr = MassivRandom(10);
+//double [] arr ={1,2,3,4,5,6,7,8,9,10};
 Console.Write(string.Join(",", arr));
 double min = SelectionSortMin(arr);
 double max = SelectionSortMax(arr);
-Console.WriteLine($"Разница {max}-{min} = {max - min}");
+Console.WriteLine();
+Console.Write($"Разница между максимальным и минимальным значением {max}-{min} = {max - min}");
